@@ -6,21 +6,36 @@
   <body>
     <main>
       <section class="human-side">
-        
-        <p class="human-header">Human</p>
-        <p class="user-score" id="userScore">Wins: 0</p>
+        <img class="surfer sidebar-color" src="./assets/surfer.png" alt="surfer">
+        <p class="human-header sidebar-color">Human</p>
+        <p class="user-score sidebar-color" id="userScore">Wins: 0</p>
+        <button type="button" class="change-game-button hidden" name="change-game">Change Game?</button>
       </section>
-      <section class="fighters">
-        <h1>ROCK PAPER SCISSORS WHAT?</h1>
-        <h3>Choose your fighter!</h3>
-        <button class="rock">Rock</button>
-        <button class="paper">Paper</button>
-        <button class="scissors">Scissors</button>
+      <section class="game fighters">
+        <h1>SHARK CRAB OCTOPUS</h1>
+        <section class="choose-game">
+          <h3>Choose your game!</h3>
+          <button type="button" class="classic-mode game-button" name="button"> CLASSIC<br>Shark > Crab<br>Crab > Octopus<br>Octopus > Shark</button>
+          <button type="button" class="difficult-mode  game-button" name="button">DIFFICULT<br>Shark > Crab & Turtle<br>Crab > Octopus & Mermaid<br>Octopus > Shark & Turtle<br>Turtle > Crab & Mermaid<br>Mermaid > Shark & Octopus<br></button>
+        </section>
+        <section class="choose-fighter hidden">
+          <h3>Choose your fighter!</h3>
+          <button type="button" class="shark-button" name="button"><img class="shark" src="./assets/shark.png" alt="shark"></button>
+          <button type="button" class="crab-button" name="button"><img class="crab" src="./assets/crab.png" alt="crab"></button>
+          <button type="button" class="octopus-button" name="button"><img class="octopus" src="./assets/octopus.png" alt="octopus"></button>
+          <section class="spicy hidden">
+            <button type="button" class="turtle-button" name="button"><img class="turtle" src="./assets/turtle.png" alt="turtle"></button>
+            <button type="button" class="mermaid-button" name="button"><img class="mermaid" src="./assets/mermaid.png" alt="mermaid"></button>
+          </section>
+        </section>
+        <section class="display-winner">
+        </section>
       </section>
       <section class="computer-side">
-        <p>Computer Side</p>
+        <img class="pirate sidebar-color" src="./assets/pirate.png" alt="pirate">
+        <p class="computer-header sidebar-color">Pirate</p>
+        <p class="computer-score sidebar-color" id="computerScore">Wins: 0</p>
       </section>
-
     </main>
   </body>
   <script type="text/javascript" src="game.js"></script>
