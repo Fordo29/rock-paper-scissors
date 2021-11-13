@@ -1,7 +1,7 @@
 class Game {
   constructor() {
     this.surfer = new Player("Surfer", "./assets/surfer.png");
-    this.pirate = new Player("Pirate", "🚣🏼‍♀️");
+    this.pirate = new Player("Pirate", "‍./assets/pirate.png");
     this.type = "";
     //type is spicy or regular
 
