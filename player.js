@@ -6,17 +6,15 @@ class Player {
     this.choice = "";
   }
 
-  takeTurn(game.type) {
+  takeTurn(gameType) {
     if (this.name === "Surfer") {
-      this.choice = playerInput
-    } else if (this.name === "Pirate") {
-      this.choice =
+      this.choice = playerInput;
+    }  if (this.name === "Pirate" && gameType === "Spicy") {
+      this.choice = spicyFighters[getRandomIndex(spicyFighters)];
+    } else if (this.name === "Pirate" && gameType === "Classic") {
+      this.choice = classicFighters[getRandomIndex(classicFighters)];
     }
-    pirateChoice(classicFighters);
-
-
   }
-
 
   saveWinsToStorage() {
     this.wins++;
@@ -29,13 +27,9 @@ class Player {
 
 }
 
-// pirateChoice(array) {
-//   this.pirateChoice = array[getRandomIndex(array)];
-// }
+var classicFighters = ["Shark", "Crab", "Octopus"];
+var spicyFighters = ["Shark", "Crab", "Octopus", "Turtle", "Mermaid"];
 
-// var classicFighters = ["Shark", "Crab", "Octopus"];
-// var spicyFighters = ["Shark", "Crab", "Octopus", "Turtle", "Mermaid"];
-//
-// function getRandomIndex(array) {
-//    return Math.floor(Math.random() * array.length);
-// }
+function getRandomIndex(array) {
+   return Math.floor(Math.random() * array.length);
+}

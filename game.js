@@ -1,15 +1,17 @@
 class Game {
-  constructor() {
+  constructor(gameType) {
     this.surfer = new Player("Surfer", surferImg);
     this.pirate = new Player("Pirate", pirateImg);
-    this.type = type;
+    this.type = gameType;
     //type is spicy or regular
 
   }
 
   determineGameType(){
-    if (type === ) {
-
+    if (this.type === "Classic") {
+      var classicFighters = ["Shark", "Crab", "Octopus"];
+    } else if (this.type === "Spicy") {
+      var spicyFighters = ["Shark", "Crab", "Octopus", "Turtle", "Mermaid"];
     }
   }
 
