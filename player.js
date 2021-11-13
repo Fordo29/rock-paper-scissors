@@ -20,11 +20,12 @@ class Player {
   }
 
   saveWinsToStorage() {
-    //add to local storage
+    this.wins
+    return localStorage.setItem('wins', JSON.stringify(this.wins));
   }
 
   retrieveWinsFromStorage() {
-    //pull from local storage stuff here
+    return JSON.parse(localStorage.getItem('wins'))
   }
 
 }
