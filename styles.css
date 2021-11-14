@@ -107,7 +107,8 @@ button:hover {
   line-height: 2;
 }
 
-.sidebar-color {
+.sidebar-color,
+.surfer {
 	background: #B8DFD8;
 }
 

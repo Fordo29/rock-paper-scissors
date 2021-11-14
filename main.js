@@ -10,6 +10,16 @@ var changeGameBtn = document.querySelector(".change-game-button");
 var homeView = document.querySelector(".choose-game");
 var classGameView = document.querySelector(".choose-fighter");
 var spicyGameView = document.querySelector(".choose-fighter-spicy");
+var sharkSurfer = document.getElementById("shark");
+var crabSurfer = document.getElementById("crab");
+var octopusSurfer = document.getElementById("octopus");
+var turtleSurfer = document.getElementById("turtle");
+var mermaidSurfer = document.getElementById("mermaid");
+var sharkPirate = document.getElementById("sharkComputer");
+var crabPirate = document.getElementById("crabComputer");
+var octopusPirate = document.getElementById("octopusComputer");
+var turtlePirate = document.getElementById("turtleComputer");
+var mermaidPirate = document.getElementById("mermaidComputer");
 var surferImg = document.querySelector(".surfer");
 
 
@@ -21,31 +31,36 @@ fighterBtn.addEventListener("click", function(event) {
  });
 
 
-
-
 function playGame(event) {
-    game.surfer.choice = event.target.id;
-    console.log(game.surfer.choice);
-    game.determineWinner();
-    console.log(game.pirate.choice);
-    displayPlayerInfo();
-    game.surfer.saveWinsToStorage(game.surfer.wins);
-    game.pirate.saveWinsToStorage(game.pirate.wins);
+  game.surfer.retrieveWinsFromStorage();
+  game.pirate.retrieveWinsFromStorage();
+  game.surfer.choice = event.target.id;
+  console.log(game.surfer.choice);
+  game.determineWinner();
+  console.log(game.pirate.choice);
+  displayPlayerInfo();
+  displayWinners()
+  console.log(game.surfer.wins);
+  console.log(game.pirate.wins);
+  game.surfer.saveWinsToStorage(game.surfer.wins);
+  game.pirate.saveWinsToStorage(game.pirate.wins);
 }
 
 function displayPlayerInfo() {
-  var savedWins = game.surfer.retrieveWinsFromStorage();
-  var savedWins = game.pirate.retrieveWinsFromStorage();
-  console.log(savedWins);
   surferSide.innerHTML = `
     <img class="sidebar-color" src="./assets/surfer.png" alt="surfer">
     <p class="sidebar-color">${game.surfer.name}</p>
-    <p class="sidebar-color" id="score">Wins: ${game.surfer.wins}</p>`;
+    <p class="sidebar-color" id="score">Wins: ${game.surfer.wins || 0}</p>`;
 
   pirateSide.innerHTML = `
     <img class="sidebar-color" src="./assets/pirate.png" alt="pirate">
     <p class="sidebar-color">${game.pirate.name}</p>
-    <p class="sidebar-color" id="score">Wins: ${game.pirate.wins}</p>`;
+    <p class="sidebar-color" id="score">Wins: ${game.pirate.wins || 0}</p>`;
+}
+
+function displayWinners() {
+  show2([sharkPirate]);
+  hide2([]);
 }
 
 
@@ -59,17 +74,15 @@ function goHome() {
 function classicGame() {
   show(changeGameBtn);
   show(classGameView);
-  hide(homeView);
-  hide(turtleBtn);
-  hide(mermaidBtn);
+  hide2([homeView, turtleSurfer, mermaidSurfer]);
   game.type = "Classic";
 }
 
 function spicyGame() {
   show(changeGameBtn);
   show(classGameView);
-  show(turtleBtn);
-  show(mermaidBtn);
+  show(turtleSurfer);
+  show(mermaidSurfer);
   hide(homeView);
   game.type = "Spicy";
 }
@@ -88,14 +101,14 @@ function showHide(view, vanish) {
 };
 
 
-// function show(elements) {
-//   for (var i = 0; i < elements.length; i++) {
-//     elements[i].classList.remove('hidden');
-//   }
-// }
-//
-// function hide(elements) {
-//   for (var i = 0; i < elements.length; i++) {
-//     elements[i].classList.add('hidden');
-//   }
-// }
+function show2(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.remove('hidden');
+  }
+}
+
+function hide2(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.add('hidden');
+  }
+}

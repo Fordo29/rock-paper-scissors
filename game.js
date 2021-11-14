@@ -45,6 +45,6 @@ class Game {
     }
     this.pirate.wins++;
     console.log("I got your booty!");
-    return false
+    return false;
   }
 }
