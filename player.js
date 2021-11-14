@@ -2,7 +2,7 @@ class Player {
   constructor(name, tokenImg) {
     this.name = name;
     this.token = tokenImg;
-    this.wins = 0;
+    this.wins = this.wins || 0;
     this.choice = "";
   }
 
@@ -20,24 +20,24 @@ class Player {
   }
 
   saveWinsToStorage() {
-    var savedWins = this.wins
-    savedWins = parseData() || 0;
-    stringifyData(savedWins);
+    if (this.name === "Surfer") {
+    localStorage.setItem('savedWins', JSON.stringify(this.wins));
+    } else {
+    localStorage.setItem('savedWins2', JSON.stringify(this.wins));
+    }
   }
 
   retrieveWinsFromStorage() {
-    var retrieveWins = localStorage.getItem(this.name);
-    JSON.parse(retrieveWins);
+    this.wins = JSON.parse(localStorage.getItem('savedWins'));
+    return this.wins
   }
 
 }
-function stringifyData(savedWins) {
-  localStorage.setItem('savedWins', JSON.stringify(savedWins));
-};
 
-function parseData() {
-  return JSON.parse(localStorage.getItem('savedWins'));
-};
+
+// function parseData() {
+//   return JSON.parse(localStorage.getItem('savedWins'));
+// };
 
 function getRandomIndex(array) {
    return Math.floor(Math.random() * array.length);
