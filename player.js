@@ -11,25 +11,33 @@ class Player {
     if (playerInput) {
       this.choice = playerInput;
     } else if (gameType === "Classic") {
-      var classicFighters = ["Shark", "Crab", "Octopus"];
+      var classicFighters = ["shark", "crab", "octopus"];
       this.choice = classicFighters[getRandomIndex(classicFighters)];
     } else if (gameType === "Spicy") {
-      var spicyFighters = ["Shark", "Crab", "Octopus", "Turtle", "Mermaid"];
+      var spicyFighters = ["shark", "crab", "octopus", "turtle", "mermaid"];
       this.choice = spicyFighters[getRandomIndex(spicyFighters)];
     }
   }
 
   saveWinsToStorage() {
-    this.wins
-    return localStorage.setItem('wins', JSON.stringify(this.wins));
+    var savedWins = this.wins
+    savedWins = parseData() || 0;
+    stringifyData(savedWins);
   }
 
   retrieveWinsFromStorage() {
-    return JSON.parse(localStorage.getItem('wins'))
+    var retrieveWins = localStorage.getItem(this.name);
+    JSON.parse(retrieveWins);
   }
 
 }
+function stringifyData(savedWins) {
+  localStorage.setItem('savedWins', JSON.stringify(savedWins));
+};
 
+function parseData() {
+  return JSON.parse(localStorage.getItem('savedWins'));
+};
 
 function getRandomIndex(array) {
    return Math.floor(Math.random() * array.length);
