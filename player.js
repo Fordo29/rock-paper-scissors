@@ -28,16 +28,16 @@ class Player {
   }
 
   retrieveWinsFromStorage() {
-    this.wins = JSON.parse(localStorage.getItem('savedWins'));
-    return this.wins
+    var wins = '';
+    if(this.name === "Surfer") {
+      wins = JSON.parse(localStorage.getItem('savedWins'));
+    } else {
+      wins = JSON.parse(localStorage.getItem('savedWins2'));
+    }
+    return wins;
   }
 
 }
-
-
-// function parseData() {
-//   return JSON.parse(localStorage.getItem('savedWins'));
-// };
 
 function getRandomIndex(array) {
    return Math.floor(Math.random() * array.length);
