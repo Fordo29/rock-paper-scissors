@@ -4,12 +4,14 @@ class Player {
     this.token = tokenImg;
     this.wins = this.wins || 0;
     this.choice = "";
+    this.src = "";
   }
 
   takeTurn(gameType, playerInput) {
       // this.choice = "";
     if (playerInput) {
       this.choice = playerInput;
+      this.src = `./assets/${this.choice}.png`
     } else if (gameType === "Classic") {
       var classicFighters = ["shark", "crab", "octopus"];
       this.choice = classicFighters[getRandomIndex(classicFighters)];

@@ -9,7 +9,7 @@ var mermaidBtn = document.querySelector(".mermaid");
 var changeGameBtn = document.querySelector(".change-game-button");
 var homeView = document.querySelector(".choose-game");
 var classGameView = document.querySelector(".choose-fighter");
-var spicyGameView = document.querySelector(".choose-fighter-spicy");
+var displayWinnerView = document.querySelector(".display-winner")
 var sharkSurfer = document.getElementById("shark");
 var crabSurfer = document.getElementById("crab");
 var octopusSurfer = document.getElementById("octopus");
@@ -20,7 +20,10 @@ var crabPirate = document.getElementById("crabComputer");
 var octopusPirate = document.getElementById("octopusComputer");
 var turtlePirate = document.getElementById("turtleComputer");
 var mermaidPirate = document.getElementById("mermaidComputer");
-var surferImg = document.querySelector(".surfer");
+// var surferImg = document.querySelector(".surfer");
+var headline = document.querySelector(".headline");
+var surferImg = document.querySelector(".surfer-img");
+var pirateImg = document.querySelector(".pirate-img")
 
 document.addEventListener("load", displayPlayerInfo());
 chooseClassicBtn.addEventListener("click", classicGame);
@@ -30,17 +33,13 @@ fighterBtn.addEventListener("click", function(event) {
     playGame(event);
  });
 
-
 function playGame(event) {
-  game.surfer.choice = event.target.id;
+  game.surfer.choice = event.target.closest('img').id;
   console.log(game.surfer.choice);
   game.determineWinner();
   console.log(game.pirate.choice);
   displayPlayerInfo();
-  // displayWinners();
-  // console.log(game.surfer.wins);
-  // console.log(game.pirate.wins);
-
+  displayWinners();
 }
 
 function displayPlayerInfo() {
@@ -58,55 +57,50 @@ function displayPlayerInfo() {
 }
 
 function displayWinners() {
-  show2([sharkPirate]);
-  hide2([]);
+  show([displayWinnerView]);
+  hide([changeGameBtn, homeView, classGameView, turtleSurfer, mermaidSurfer]);
+  game.gameWinnerAnnouncement();
+  surferImg.src = `./assets/${game.surfer.choice}.png`;
+  pirateImg.src = `./assets/${game.pirate.choice}.png`;
+  if (game.type === "Classic") {
+    setTimeout(classicGame, 1000);
+  } else if (game.type === "Spicy") {
+    setTimeout(spicyGame, 1000);
+  }
 }
 
-
-
 function goHome() {
-  show(homeView);
-  hide(changeGameBtn);
-  hide(classGameView);
+  show([homeView]);
+  hide([changeGameBtn, classGameView, displayWinnerView]);
 }
 
 function classicGame() {
-  show(changeGameBtn);
-  show(classGameView);
-  hide2([homeView, turtleSurfer, mermaidSurfer]);
+  show([changeGameBtn, classGameView]);
+  hide([homeView, turtleSurfer, mermaidSurfer, displayWinnerView]);
   game.type = "Classic";
 }
 
 function spicyGame() {
-  show(changeGameBtn);
-  show(classGameView);
-  show(turtleSurfer);
-  show(mermaidSurfer);
-  hide(homeView);
+  show([changeGameBtn, classGameView, turtleSurfer, mermaidSurfer]);
+  hide([homeView, displayWinnerView]);
   game.type = "Spicy";
 }
 
-function show(element) {
-  element.classList.remove("hidden");
-};
+function determineGameView() {
+  if (this.type === "Classic") {
+    classicGame();
+  } else if (this.type === "Spicy") {
+    spicyGame();
+  }
+}
 
-function hide(element) {
-  element.classList.add("hidden");
-};
-
-function showHide(view, vanish) {
-  show(view);
-  hide(vanish);
-};
-
-
-function show2(elements) {
+function show(elements) {
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.remove('hidden');
   }
 }
 
-function hide2(elements) {
+function hide(elements) {
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.add('hidden');
   }
