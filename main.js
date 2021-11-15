@@ -22,7 +22,7 @@ var turtlePirate = document.getElementById("turtleComputer");
 var mermaidPirate = document.getElementById("mermaidComputer");
 var surferImg = document.querySelector(".surfer");
 
-
+document.addEventListener("load", displayPlayerInfo());
 chooseClassicBtn.addEventListener("click", classicGame);
 chooseSpicyBtn.addEventListener("click", spicyGame);
 changeGameBtn.addEventListener("click", goHome);
@@ -32,30 +32,29 @@ fighterBtn.addEventListener("click", function(event) {
 
 
 function playGame(event) {
-  game.surfer.retrieveWinsFromStorage();
-  game.pirate.retrieveWinsFromStorage();
   game.surfer.choice = event.target.id;
   console.log(game.surfer.choice);
   game.determineWinner();
   console.log(game.pirate.choice);
   displayPlayerInfo();
-  displayWinners()
-  console.log(game.surfer.wins);
-  console.log(game.pirate.wins);
-  game.surfer.saveWinsToStorage(game.surfer.wins);
-  game.pirate.saveWinsToStorage(game.pirate.wins);
+  // displayWinners();
+  // console.log(game.surfer.wins);
+  // console.log(game.pirate.wins);
+
 }
 
 function displayPlayerInfo() {
+  game.surfer.wins = game.surfer.retrieveWinsFromStorage() || 0;
+  game.pirate.wins = game.pirate.retrieveWinsFromStorage() || 0;
   surferSide.innerHTML = `
     <img class="sidebar-color" src="./assets/surfer.png" alt="surfer">
     <p class="sidebar-color">${game.surfer.name}</p>
-    <p class="sidebar-color" id="score">Wins: ${game.surfer.wins || 0}</p>`;
+    <p class="sidebar-color" id="score">Wins: ${game.surfer.wins}</p>`;
 
   pirateSide.innerHTML = `
     <img class="sidebar-color" src="./assets/pirate.png" alt="pirate">
     <p class="sidebar-color">${game.pirate.name}</p>
-    <p class="sidebar-color" id="score">Wins: ${game.pirate.wins || 0}</p>`;
+    <p class="sidebar-color" id="score">Wins: ${game.pirate.wins}</p>`;
 }
 
 function displayWinners() {
