@@ -1,15 +1,15 @@
 var game = new Game();
 var chooseClassicBtn = document.querySelector(".classic-mode");
 var chooseSpicyBtn = document.querySelector(".difficult-mode");
-var pirateSide = document.querySelector(".computer-side")
-var surferSide = document.querySelector(".surfer")
+var pirateSide = document.querySelector(".computer-side");
+var surferSide = document.querySelector(".surfer");
 var fighterBtn = document.querySelector(".fight");
 var turtleBtn = document.querySelector(".turtle");
 var mermaidBtn = document.querySelector(".mermaid");
 var changeGameBtn = document.querySelector(".change-game-button");
 var homeView = document.querySelector(".choose-game");
 var classGameView = document.querySelector(".choose-fighter");
-var displayWinnerView = document.querySelector(".display-winner")
+var displayWinnerView = document.querySelector(".display-winner");
 var sharkSurfer = document.getElementById("shark");
 var crabSurfer = document.getElementById("crab");
 var octopusSurfer = document.getElementById("octopus");
@@ -25,15 +25,13 @@ document.addEventListener("load", displayPlayerInfo());
 chooseClassicBtn.addEventListener("click", classicGame);
 chooseSpicyBtn.addEventListener("click", spicyGame);
 changeGameBtn.addEventListener("click", goHome);
-fighterBtn.addEventListener("click", function(event) {
-    playGame(event);
- });
+fighterBtn.addEventListener("click", function (event) {
+  playGame(event);
+});
 
 function playGame(event) {
   game.surfer.choice = event.target.id;
-  console.log(game.surfer.choice);
   game.determineWinner();
-  console.log(game.pirate.choice);
   displayPlayerInfo();
   displayWinners();
 }
@@ -41,6 +39,7 @@ function playGame(event) {
 function displayPlayerInfo() {
   game.surfer.wins = game.surfer.retrieveWinsFromStorage() || 0;
   game.pirate.wins = game.pirate.retrieveWinsFromStorage() || 0;
+
   surferSide.innerHTML = `
     <img class="sidebar-color" src="./assets/surfer.png" alt="surfer">
     <p class="sidebar-color">${game.surfer.name}</p>
@@ -53,11 +52,19 @@ function displayPlayerInfo() {
 }
 
 function displayWinners() {
-  show([displayWinnerView, surferEmoji, pirateEmoji]);
-  hide([changeGameBtn, homeView, classGameView, turtleSurfer, mermaidSurfer]);
+  displayOrHide([displayWinnerView, surferEmoji, pirateEmoji], "show");
+  displayOrHide([
+    changeGameBtn,
+    homeView,
+    classGameView,
+    turtleSurfer,
+    mermaidSurfer,
+  ]);
+
   gameWinnerAnnouncement();
   surferImg.src = `./assets/${game.surfer.choice}.png`;
   pirateImg.src = `./assets/${game.pirate.choice}.png`;
+
   if (game.type === "Classic") {
     setTimeout(classicGame, 2000);
   } else if (game.type === "Spicy") {
@@ -74,19 +81,28 @@ function gameWinnerAnnouncement() {
 }
 
 function goHome() {
-  show([homeView]);
-  hide([changeGameBtn, classGameView, displayWinnerView, surferEmoji, pirateEmoji]);
+  displayOrHide([homeView], "show");
+  displayOrHide([
+    changeGameBtn,
+    classGameView,
+    displayWinnerView,
+    surferEmoji,
+    pirateEmoji,
+  ]);
 }
 
 function classicGame() {
-  show([changeGameBtn, classGameView]);
-  hide([homeView, turtleSurfer, mermaidSurfer, displayWinnerView]);
+  displayOrHide([changeGameBtn, classGameView], "show");
+  displayOrHide([homeView, turtleSurfer, mermaidSurfer, displayWinnerView]);
   game.type = "Classic";
 }
 
 function spicyGame() {
-  show([changeGameBtn, classGameView, turtleSurfer, mermaidSurfer]);
-  hide([homeView, displayWinnerView]);
+  displayOrHide(
+    [changeGameBtn, classGameView, turtleSurfer, mermaidSurfer],
+    "show"
+  );
+  displayOrHide([homeView, displayWinnerView]);
   game.type = "Spicy";
 }
 
@@ -98,14 +114,12 @@ function determineGameView() {
   }
 }
 
-function show(elements) {
+function displayOrHide(elements, showOrHide) {
   for (var i = 0; i < elements.length; i++) {
-    elements[i].classList.remove('hidden');
-  }
-}
-
-function hide(elements) {
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].classList.add('hidden');
+    if (showOrHide === "show") {
+      elements[i].classList.remove("hidden");
+    } else {
+      elements[i].classList.add("hidden");
+    }
   }
 }

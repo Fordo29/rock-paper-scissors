@@ -14,23 +14,31 @@
         </div>
         <button type="button" class="change-game-button hidden" name="change-game" id="changeBtn">Change Game?</button>
       </section>
+
       <section class="game game-view">
         <h1>SHARK CRAB OCTOPUS</h1>
         <section class="choose-game">
           <h3>Choose your game!</h3>
           <button type="button" class="classic-mode game-button" name="button"> CLASSIC<br><br/>Shark > Crab<br>Crab > Octopus<br>Octopus > Shark</button>
-          <button type="button" class="difficult-mode game-button" name="button">DIFFICULT<br><br/>Shark > Crab & Turtle<br>Crab > Octopus & Mermaid<br>Octopus > Shark & Mermaid<br>Turtle > Crab & Octopus<br>Mermaid > Shark & Turtle<br></button>
+          <button type="button" class="difficult-mode game-button" name="button">DIFFICULT<br><br/>Shark > Crab or Turtle<br>Crab > Octopus or Mermaid<br>Octopus > Shark or Mermaid<br>Turtle > Crab or Octopus<br>Mermaid > Shark or Turtle<br></button>
         </section>
+
         <section class="choose-fighter hidden">
           <h3>Choose your fighter!</h3>
           <section class="fight">
-            <button type="button" class="fighter" name="button"><img class="shark" src="./assets/shark.png" alt="shark" id="shark"></button>
-            <button type="button" class="fighter" name="button"><img class="crab" src="./assets/crab.png" alt="crab" id="crab"></button>
-            <button type="button" class="fighter" name="button"><img class="octopus" src="./assets/octopus.png" alt="octopus" id="octopus"></button><br/>
-            <button type="button" class="fighter turtle" name="button"><img class="turtle" src="./assets/turtle.png" alt="turtle" id="turtle"></button>
-            <button type="button" class="fighter mermaid" name="button"><img class="mermaid" src="./assets/mermaid.png" alt="mermaid" id="mermaid"></button>
+            <section>
+              <button type="button" class="fighter" name="button"><img class="shark" src="./assets/shark.png" alt="shark" id="shark"></button>
+              <button type="button" class="fighter" name="button"><img class="crab" src="./assets/crab.png" alt="crab" id="crab"></button>
+              <button type="button" class="fighter" name="button"><img class="octopus" src="./assets/octopus.png" alt="octopus" id="octopus"></button>
+            </section>
+
+            <section class="spicy-section">
+              <button type="button" class="fighter turtle" name="button"><img class="turtle" src="./assets/turtle.png" alt="turtle" id="turtle"></button>
+              <button type="button" class="fighter mermaid" name="button"><img class="mermaid" src="./assets/mermaid.png" alt="mermaid" id="mermaid"></button>
+            </section>
           </section>
         </section>
+
         <section class="display-winner">
           <h3 class="headline"></h3>
           <img class="surfer-img" src="" alt="">
@@ -39,6 +47,7 @@
           <img class="emoji pirate-emoji hidden" src="./assets/pirate.png" alt="pirate">
         </section>
       </section>
+
       <section class="computer-side">
         <img class="sidebar-color" src="./assets/pirate.png" alt="pirate">
         <p class="sidebar-color">Pirate</p>

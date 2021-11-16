@@ -8,10 +8,9 @@ class Player {
   }
 
   takeTurn(gameType, playerInput) {
-      // this.choice = "";
     if (playerInput) {
       this.choice = playerInput;
-      this.src = `./assets/${this.choice}.png`
+      this.src = `./assets/${this.choice}.png`;
     } else if (gameType === "Classic") {
       var classicFighters = ["shark", "crab", "octopus"];
       this.choice = classicFighters[getRandomIndex(classicFighters)];
@@ -23,24 +22,23 @@ class Player {
 
   saveWinsToStorage() {
     if (this.name === "Surfer") {
-    localStorage.setItem('savedWins', JSON.stringify(this.wins));
+      localStorage.setItem("savedWins", JSON.stringify(this.wins));
     } else {
-    localStorage.setItem('savedWins2', JSON.stringify(this.wins));
+      localStorage.setItem("savedWins2", JSON.stringify(this.wins));
     }
   }
 
   retrieveWinsFromStorage() {
-    var wins = '';
-    if(this.name === "Surfer") {
-      wins = JSON.parse(localStorage.getItem('savedWins'));
+    var wins = "";
+    if (this.name === "Surfer") {
+      wins = JSON.parse(localStorage.getItem("savedWins"));
     } else {
-      wins = JSON.parse(localStorage.getItem('savedWins2'));
+      wins = JSON.parse(localStorage.getItem("savedWins2"));
     }
     return wins;
   }
-
 }
 
 function getRandomIndex(array) {
-   return Math.floor(Math.random() * array.length);
+  return Math.floor(Math.random() * array.length);
 }

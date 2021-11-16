@@ -139,3 +139,7 @@ button:hover {
 .hidden {
   display: none;
 }
+
+.spicy-section {
+  margin-top: 10px;
+}
