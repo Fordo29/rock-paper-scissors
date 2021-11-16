@@ -90,10 +90,14 @@ button:hover {
   color: #E8F6EF;
 }
 
-.fighters {
+.game-view {
 	flex: 4;
 	text-align: center;
 	padding:10px;
+}
+
+.fighter {
+	background: transparent;
 }
 
 .computer-side,

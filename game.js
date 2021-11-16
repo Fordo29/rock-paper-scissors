@@ -4,10 +4,8 @@ class Game {
     this.pirate = new Player("Pirate", "‍./assets/pirate.png");
     this.type = "";
     this.winner = "";
-    //type is spicy or regular
 
   }
-
 
   determineWinner() {
     this.surfer.takeTurn(this.type, this.surfer.choice);
@@ -15,48 +13,21 @@ class Game {
     this.surfer.wins = this.surfer.retrieveWinsFromStorage() || 0;
     this.pirate.wins = this.pirate.retrieveWinsFromStorage() || 0;
     if (this.surfer.choice === this.pirate.choice) {
+      this.winner = "";
       console.log("A parley is in progress and the invaders may withdraw (aka TIE)");
-      this.surfer.saveWinsToStorage();
-      this.pirate.saveWinsToStorage();
-      return true;
+      return "TIE";
     } else if (this.surfer.choice === "shark" && this.pirate.choice === "crab" || this.pirate.choice === "turtle") {
-      this.surfer.wins++;
-      this.surfer.saveWinsToStorage();
-      this.pirate.saveWinsToStorage();
-      this.winner = this.surfer.name;
-      console.log("Surf's up!");
-      return true;
+      this.surferWins();
     } else if (this.surfer.choice === "crab" && this.pirate.choice === "octopus" || this.pirate.choice === "turtle") {
-      this.surfer.wins++;
-      this.surfer.saveWinsToStorage();
-      this.pirate.saveWinsToStorage();
-      this.winner = this.surfer.name;
-      console.log("Surf's up!");
-      return true;
+      this.surferWins();
     } else if (this.surfer.choice === "octopus" && this.pirate.choice === "shark" || this.pirate.choice === "mermaid") {
-      this.surfer.wins++;
-      this.surfer.saveWinsToStorage();
-      this.pirate.saveWinsToStorage();
-      this.winner = this.surfer.name;
-      console.log("Surf's up!");
-      return true;
+      this.surferWins();
     } else if (this.surfer.choice === "turtle" && this.pirate.choice === "crab" || this.pirate.choice === "octopus") {
-      this.surfer.wins++;
-      this.surfer.saveWinsToStorage();
-      this.pirate.saveWinsToStorage();
-      this.winner = this.surfer.name;
-      console.log("Surf's up!");
-      return true;
+      this.surferWins();
     } else if (this.surfer.choice === "mermaid" && this.pirate.choice === "shark" || this.pirate.choice === "turtle") {
-      this.surfer.wins++;
-      this.surfer.saveWinsToStorage();
-      this.pirate.saveWinsToStorage();
-      this.winner = this.surfer.name;
-      console.log("Surf's up!");
-      return true;
+      this.surferWins();
     } else {
       this.pirate.wins++;
-      this.surfer.saveWinsToStorage();
       this.pirate.saveWinsToStorage();
       this.winner = this.pirate.name;
       console.log("I got your booty!");
@@ -64,4 +35,11 @@ class Game {
     }
   }
 
+  surferWins() {
+    this.surfer.wins++;
+    this.surfer.saveWinsToStorage();
+    this.winner = this.surfer.name;
+    console.log("Surf's up!");
+    return true;
+  }
 }
