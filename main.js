@@ -113,14 +113,6 @@ function spicyGame() {
   game.type = "Spicy";
 }
 
-function determineGameView() {
-  if (this.type === "Classic") {
-    classicGame();
-  } else if (this.type === "Spicy") {
-    spicyGame();
-  }
-}
-
 function displayOrHide(showOrHide, elements) {
   for (var i = 0; i < elements.length; i++) {
     if (showOrHide === "show") {
