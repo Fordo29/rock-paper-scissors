@@ -15,15 +15,11 @@ var crabSurfer = document.getElementById("crab");
 var octopusSurfer = document.getElementById("octopus");
 var turtleSurfer = document.getElementById("turtle");
 var mermaidSurfer = document.getElementById("mermaid");
-var sharkPirate = document.getElementById("sharkComputer");
-var crabPirate = document.getElementById("crabComputer");
-var octopusPirate = document.getElementById("octopusComputer");
-var turtlePirate = document.getElementById("turtleComputer");
-var mermaidPirate = document.getElementById("mermaidComputer");
-// var surferImg = document.querySelector(".surfer");
 var headline = document.querySelector(".headline");
 var surferImg = document.querySelector(".surfer-img");
-var pirateImg = document.querySelector(".pirate-img")
+var pirateImg = document.querySelector(".pirate-img");
+var surferTag = document.querySelector(".tagline");
+var pirateTag = document.querySelector(".tagline1");
 
 document.addEventListener("load", displayPlayerInfo());
 chooseClassicBtn.addEventListener("click", classicGame);
@@ -34,7 +30,7 @@ fighterBtn.addEventListener("click", function(event) {
  });
 
 function playGame(event) {
-  game.surfer.choice = event.target.closest('img').id;
+  game.surfer.choice = event.target.id;
   console.log(game.surfer.choice);
   game.determineWinner();
   console.log(game.pirate.choice);
@@ -57,21 +53,21 @@ function displayPlayerInfo() {
 }
 
 function displayWinners() {
-  show([displayWinnerView]);
+  show([displayWinnerView, surferTag, pirateTag]);
   hide([changeGameBtn, homeView, classGameView, turtleSurfer, mermaidSurfer]);
   game.gameWinnerAnnouncement();
   surferImg.src = `./assets/${game.surfer.choice}.png`;
   pirateImg.src = `./assets/${game.pirate.choice}.png`;
   if (game.type === "Classic") {
-    setTimeout(classicGame, 1000);
+    setTimeout(classicGame, 1500);
   } else if (game.type === "Spicy") {
-    setTimeout(spicyGame, 1000);
+    setTimeout(spicyGame, 1500);
   }
 }
 
 function goHome() {
   show([homeView]);
-  hide([changeGameBtn, classGameView, displayWinnerView]);
+  hide([changeGameBtn, classGameView, displayWinnerView, surferTag, pirateTag]);
 }
 
 function classicGame() {

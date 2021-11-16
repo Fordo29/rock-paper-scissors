@@ -8,13 +8,12 @@ class Game {
 
   }
 
-  
+
   determineWinner() {
     this.surfer.takeTurn(this.type, this.surfer.choice);
     this.pirate.takeTurn(this.type);
     this.surfer.wins = this.surfer.retrieveWinsFromStorage() || 0;
     this.pirate.wins = this.pirate.retrieveWinsFromStorage() || 0;
-
     if (this.surfer.choice === this.pirate.choice) {
       console.log("A parley is in progress and the invaders may withdraw (aka TIE)");
       this.surfer.saveWinsToStorage();
@@ -63,7 +62,6 @@ class Game {
       console.log("I got your booty!");
       return false;
     }
-
   }
 
   gameWinnerAnnouncement() {
