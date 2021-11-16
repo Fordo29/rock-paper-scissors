@@ -52,8 +52,8 @@ function displayPlayerInfo() {
 }
 
 function displayWinners() {
-  displayOrHide([displayWinnerView, surferEmoji, pirateEmoji], "show");
-  displayOrHide([
+  displayOrHide("show", [displayWinnerView, surferEmoji, pirateEmoji]);
+  displayOrHide("hide", [
     changeGameBtn,
     homeView,
     classGameView,
@@ -81,8 +81,8 @@ function gameWinnerAnnouncement() {
 }
 
 function goHome() {
-  displayOrHide([homeView], "show");
-  displayOrHide([
+  displayOrHide("show", [homeView]);
+  displayOrHide("hide", [
     changeGameBtn,
     classGameView,
     displayWinnerView,
@@ -92,17 +92,24 @@ function goHome() {
 }
 
 function classicGame() {
-  displayOrHide([changeGameBtn, classGameView], "show");
-  displayOrHide([homeView, turtleSurfer, mermaidSurfer, displayWinnerView]);
+  displayOrHide("show", [changeGameBtn, classGameView]);
+  displayOrHide("hide", [
+    homeView,
+    turtleSurfer,
+    mermaidSurfer,
+    displayWinnerView,
+  ]);
   game.type = "Classic";
 }
 
 function spicyGame() {
-  displayOrHide(
-    [changeGameBtn, classGameView, turtleSurfer, mermaidSurfer],
-    "show"
-  );
-  displayOrHide([homeView, displayWinnerView]);
+  displayOrHide("show", [
+    changeGameBtn,
+    classGameView,
+    turtleSurfer,
+    mermaidSurfer,
+  ]);
+  displayOrHide("hide", [homeView, displayWinnerView]);
   game.type = "Spicy";
 }
 
@@ -114,7 +121,7 @@ function determineGameView() {
   }
 }
 
-function displayOrHide(elements, showOrHide) {
+function displayOrHide(showOrHide, elements) {
   for (var i = 0; i < elements.length; i++) {
     if (showOrHide === "show") {
       elements[i].classList.remove("hidden");
