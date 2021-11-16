@@ -59,9 +59,9 @@ function displayWinners() {
   surferImg.src = `./assets/${game.surfer.choice}.png`;
   pirateImg.src = `./assets/${game.pirate.choice}.png`;
   if (game.type === "Classic") {
-    setTimeout(classicGame, 1500);
+    setTimeout(classicGame, 2000);
   } else if (game.type === "Spicy") {
-    setTimeout(spicyGame, 1500);
+    setTimeout(spicyGame, 2000);
   }
 }
 
