@@ -64,15 +64,4 @@ class Game {
     }
   }
 
-  gameWinnerAnnouncement() {
-    if (this.winner === "Surfer" || this.winner === "Pirate") {
-      headline.innerText = `${this.winner} WINS!`
-    } else {
-      headline.innerText = `It's a TIE!`
-    }
-
-  }
-
-  // setTimeOut(function(){function(), 1000});
-
 }

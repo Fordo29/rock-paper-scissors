@@ -18,8 +18,8 @@ var mermaidSurfer = document.getElementById("mermaid");
 var headline = document.querySelector(".headline");
 var surferImg = document.querySelector(".surfer-img");
 var pirateImg = document.querySelector(".pirate-img");
-var surferTag = document.querySelector(".tagline");
-var pirateTag = document.querySelector(".tagline1");
+var surferEmoji = document.querySelector(".surfer-emoji");
+var pirateEmoji = document.querySelector(".pirate-emoji");
 
 document.addEventListener("load", displayPlayerInfo());
 chooseClassicBtn.addEventListener("click", classicGame);
@@ -53,9 +53,9 @@ function displayPlayerInfo() {
 }
 
 function displayWinners() {
-  show([displayWinnerView, surferTag, pirateTag]);
+  show([displayWinnerView, surferEmoji, pirateEmoji]);
   hide([changeGameBtn, homeView, classGameView, turtleSurfer, mermaidSurfer]);
-  game.gameWinnerAnnouncement();
+  gameWinnerAnnouncement();
   surferImg.src = `./assets/${game.surfer.choice}.png`;
   pirateImg.src = `./assets/${game.pirate.choice}.png`;
   if (game.type === "Classic") {
@@ -65,9 +65,17 @@ function displayWinners() {
   }
 }
 
+function gameWinnerAnnouncement() {
+  if (game.winner === "Surfer" || game.winner === "Pirate") {
+    headline.innerText = `${game.winner} WINS!`;
+  } else {
+    headline.innerText = `It's a TIE!`;
+  }
+}
+
 function goHome() {
   show([homeView]);
-  hide([changeGameBtn, classGameView, displayWinnerView, surferTag, pirateTag]);
+  hide([changeGameBtn, classGameView, displayWinnerView, surferEmoji, pirateEmoji]);
 }
 
 function classicGame() {
