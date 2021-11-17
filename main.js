@@ -41,12 +41,12 @@ function displayPlayerInfo() {
   game.pirate.wins = game.pirate.retrieveWinsFromStorage() || 0;
 
   surferSide.innerHTML = `
-    <img class="sidebar-color" src="./assets/surfer.png" alt="surfer">
+    <img class="sidebar-color" src="./assets/surfer.png" alt="surfer player">
     <p class="sidebar-color">${game.surfer.name}</p>
     <p class="sidebar-color" id="score">Wins: ${game.surfer.wins}</p>`;
 
   pirateSide.innerHTML = `
-    <img class="sidebar-color" src="./assets/pirate.png" alt="pirate">
+    <img class="sidebar-color" src="./assets/pirate.png" alt="pirate player">
     <p class="sidebar-color">${game.pirate.name}</p>
     <p class="sidebar-color" id="score">Wins: ${game.pirate.wins}</p>`;
 }

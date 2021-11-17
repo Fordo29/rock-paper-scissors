@@ -22,18 +22,18 @@ class Player {
 
   saveWinsToStorage() {
     if (this.name === "Surfer") {
-      localStorage.setItem("savedWins", JSON.stringify(this.wins));
+      localStorage.setItem("surferWins1", JSON.stringify(this.wins));
     } else {
-      localStorage.setItem("savedWins2", JSON.stringify(this.wins));
+      localStorage.setItem("pirateWins1", JSON.stringify(this.wins));
     }
   }
 
   retrieveWinsFromStorage() {
     var wins = "";
     if (this.name === "Surfer") {
-      wins = JSON.parse(localStorage.getItem("savedWins"));
+      wins = JSON.parse(localStorage.getItem("surferWins1"));
     } else {
-      wins = JSON.parse(localStorage.getItem("savedWins2"));
+      wins = JSON.parse(localStorage.getItem("pirateWins1"));
     }
     return wins;
   }
