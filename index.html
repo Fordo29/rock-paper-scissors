@@ -1,55 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us"
   <head>
     <link rel="stylesheet" href="./styles.css"/>
     <meta charset="utf-8">
+    <title>Rock, Paper, Scissors</title>
   </head>
   <body>
     <main>
       <section class="human-side">
         <div class = "surfer">
-          <img class="sidebar-color" src="./assets/surfer.png" alt="surfer">
+          <img class="sidebar-color" src="./assets/surfer.png" alt="surfer player">
           <p class="sidebar-color">Surfer</p>
           <p class="sidebar-color" id="score">Wins: 0</p>
         </div>
         <button type="button" class="change-game-button hidden" name="change-game" id="changeBtn">Change Game?</button>
       </section>
-
       <section class="game game-view">
         <h1>SHARK CRAB OCTOPUS</h1>
         <section class="choose-game">
-          <h3>Choose your game!</h3>
-          <button type="button" class="classic-mode game-button" name="button"> CLASSIC<br><br/>Shark > Crab<br>Crab > Octopus<br>Octopus > Shark</button>
+          <h2>Choose your game!</h2>
+          <button type="button" class="classic-mode game-button" name="button">CLASSIC<br><br/>Shark > Crab<br>Crab > Octopus<br>Octopus > Shark</button>
           <button type="button" class="difficult-mode game-button" name="button">DIFFICULT<br><br/>Shark > Crab or Turtle<br>Crab > Octopus or Mermaid<br>Octopus > Shark or Mermaid<br>Turtle > Crab or Octopus<br>Mermaid > Shark or Turtle<br></button>
         </section>
-
         <section class="choose-fighter hidden">
-          <h3>Choose your fighter!</h3>
+          <h2>Choose your fighter!</h2>
           <section class="fight">
             <section>
-              <button type="button" class="fighter" name="button"><img class="shark" src="./assets/shark.png" alt="shark" id="shark"></button>
-              <button type="button" class="fighter" name="button"><img class="crab" src="./assets/crab.png" alt="crab" id="crab"></button>
-              <button type="button" class="fighter" name="button"><img class="octopus" src="./assets/octopus.png" alt="octopus" id="octopus"></button>
+              <button type="button" class="fighter" name="button">
+                <img class="shark" src="./assets/shark.png" alt="shark" id="shark"></button>
+              <button type="button" class="fighter" name="button">
+                <img class="crab" src="./assets/crab.png" alt="crab" id="crab"></button>
+              <button type="button" class="fighter" name="button">
+                <img class="octopus" src="./assets/octopus.png" alt="octopus" id="octopus"></button>
             </section>
-
             <section class="spicy-section">
-              <button type="button" class="fighter turtle" name="button"><img class="turtle" src="./assets/turtle.png" alt="turtle" id="turtle"></button>
-              <button type="button" class="fighter mermaid" name="button"><img class="mermaid" src="./assets/mermaid.png" alt="mermaid" id="mermaid"></button>
+              <button type="button" class="fighter turtle" name="button">
+                <img class="turtle" src="./assets/turtle.png" alt="turtle" id="turtle"></button>
+              <button type="button" class="fighter mermaid" name="button">
+                <img class="mermaid" src="./assets/mermaid.png" alt="mermaid" id="mermaid"></button>
             </section>
           </section>
         </section>
-
-        <section class="display-winner">
-          <h3 class="headline"></h3>
-          <img class="surfer-img" src="" alt="">
-          <img class="emoji surfer-emoji hidden" src="./assets/surfer.png" alt="surfer"><br/><br/><br/>
-          <img class="pirate-img" src="" alt="">
-          <img class="emoji pirate-emoji hidden" src="./assets/pirate.png" alt="pirate">
+        <section class="display-winner hidden">
+          <h2 class="headline">Winner placeholder</h2>
+          <img class="surfer-img" src="" alt="surfer choice">
+          <img class="emoji surfer-emoji hidden" src="./assets/surfer.png" alt="surfer emoji"><br/><br/><br/>
+          <img class="pirate-img" src="" alt="pirate choice">
+          <img class="emoji pirate-emoji hidden" src="./assets/pirate.png" alt="pirate emoji">
         </section>
       </section>
-
       <section class="computer-side">
-        <img class="sidebar-color" src="./assets/pirate.png" alt="pirate">
+        <img class="sidebar-color" src="./assets/pirate.png" alt="pirate player">
         <p class="sidebar-color">Pirate</p>
         <p class="sidebar-color" id="score">Wins: 0</p>
       </section>
